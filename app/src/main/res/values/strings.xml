@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Criminal Intent</string>
+
+    <string name="crime_title_hint">输入一个罪行标题</string>
+    <string name="crime_title_label">标题</string>
+    <string name="crime_details_label">详情</string>
+    <string name="crime_solved_label">已解决</string>
 </resources>
