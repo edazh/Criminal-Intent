@@ -55,4 +55,14 @@ public class CrimeLab {
         }
         return null;
     }
+
+    /**
+     * 添加罪行
+     * @param crime crime实例
+     */
+    public void addCrime(Crime crime) {
+        mCrimeList.add(crime);
+    }
+
+
 }
