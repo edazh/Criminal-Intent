@@ -11,4 +11,15 @@
     <string name="hide_subtitle">隐藏副标题</string>
     <string name="new_crime">添加罪行</string>
     <string name="subtitle_format">%1$d 个罪行</string>
+
+    <string name="crime_suspect_text">选择嫌疑人</string>
+    <string name="crime_report_text">报告罪行</string>
+
+    <string name="crime_report">%1$s!此罪行于%2$s被发现。%3$s，而%4$s</string>
+    <string name="crime_report_unsolved">此案尚无法解决</string>
+    <string name="crime_report_solved">案子已解决</string>
+    <string name="crime_report_suspect">犯罪嫌疑人是%s。</string>
+    <string name="crime_report_no_suspect">此案没有嫌疑人。</string>
+    <string name="crime_report_subject">犯罪动机(Criminal Intent) 罪行报告</string>
+    <string name="send_report">罪行报告发到：</string>
 </resources>
