@@ -96,7 +96,7 @@ public class CrimeFragment extends Fragment {
 
         //是否解决checkbox
         mCbxSolved = (CheckBox) v.findViewById(R.id.crime_solved);
-        mCbxSolved.setChecked(mCrime.getSolved());
+        mCbxSolved.setChecked(mCrime.isSolved());
         mCbxSolved.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -117,5 +117,12 @@ public class CrimeFragment extends Fragment {
             mCrime.setDate(date);
             mBtnDate.setText(mCrime.getDateString());
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
     }
 }

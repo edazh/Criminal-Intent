@@ -14,11 +14,15 @@ public class Crime {
     private UUID mId;
     private String mTitle;
     private Date mDate;
-    private Boolean mSolved;
+    private boolean mSolved;
     private String mDateString;
 
     public Crime() {
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+
+    public Crime(UUID id) {
+        mId = id;
         mDate = new Date();
     }
 
@@ -42,16 +46,18 @@ public class Crime {
         mDate = date;
     }
 
-
-    public Boolean getSolved() {
+    public boolean isSolved() {
         return mSolved;
     }
 
-    public void setSolved(Boolean solved) {
+    public void setSolved(boolean solved) {
         mSolved = solved;
     }
+
 
     public String getDateString() {
         return DateFormat.format("yyyy年MM月dd日 E", mDate).toString();
     }
+
+
 }

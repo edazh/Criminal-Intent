@@ -26,7 +26,6 @@ import java.util.List;
  */
 
 public class CrimeListFragment extends Fragment {
-    private static final String TAG = "CrimeListFragment";
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mCrimeAdapter;
     private int mAdapterPosition;
@@ -43,10 +42,9 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if (savedInstanceState != null) {
-            savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
         }
         updateUI();
-        Log.d(TAG, "onCreateView: ");
 
         return v;
     }
@@ -55,7 +53,6 @@ public class CrimeListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateUI();
-        Log.d(TAG, "onResume: ");
     }
 
     private void updateUI() {
@@ -66,6 +63,7 @@ public class CrimeListFragment extends Fragment {
             mCrimeAdapter = new CrimeAdapter(crimeList);
             mCrimeRecyclerView.setAdapter(mCrimeAdapter);
         } else {
+            mCrimeAdapter.setCrimeList(crimeList);
             //mCrimeAdapter.notifyDataSetChanged();
             mCrimeAdapter.notifyItemChanged(mAdapterPosition);
             mAdapterPosition = -1;
@@ -99,7 +97,7 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mTxtTitle.setText(mCrime.getTitle());
             mTxtDate.setText(mCrime.getDateString());
-            mImgSolved.setVisibility(mCrime.getSolved() ? View.VISIBLE : View.GONE);
+            mImgSolved.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
         @Override
@@ -135,6 +133,10 @@ public class CrimeListFragment extends Fragment {
         public int getItemCount() {
             return mCrimeList.size();
         }
+
+        public void setCrimeList(List<Crime> crimeList) {
+            mCrimeList = crimeList;
+        }
     }
 
     @Override
@@ -154,7 +156,6 @@ public class CrimeListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        Log.d(TAG, "onCreate: ");
     }
 
     @Override
